@@ -19,35 +19,35 @@ DBSession = sessionmaker(bind=engine)
 session = DBSession()
 
 # Category 1
-Soccer = Category(name='Soccer')
+Soccer = Category(name='Soccer',picture='soccer.jpg')
 session.add(Soccer)
 session.commit()
 
-BasketBall = Category(name='BasketBall')
+BasketBall = Category(name='BasketBall',picture='basketball.jpg')
 session.add(BasketBall)
 session.commit()
 
-BaseBall = Category(name='BaseBall')
+BaseBall = Category(name='BaseBall',picture='baseball.jpg')
 session.add(BaseBall)
 session.commit()
 
-Frisbee = Category(name='Frisbee')
+Frisbee = Category(name='Frisbee',picture='frisbee.jpg')
 session.add(Frisbee)
 session.commit()
 
-SnowBoarding = Category(name='SnowBoarding')
+SnowBoarding = Category(name='SnowBoarding',picture='snowboarding.jpg')
 session.add(SnowBoarding)
 session.commit()
 
-RockClimbing = Category(name='SnowBoarding')
+RockClimbing = Category(name='RockClimbing',picture='rockclimbing.jpg')
 session.add(RockClimbing)
 session.commit()
 
-Hiking = Category(name='SnowBoarding')
+Hiking = Category(name='Hiking',picture='hiking.jpg')
 session.add(Hiking)
 session.commit()
 
-Hockey = Category(name='SnowBoarding')
+Hockey = Category(name='Hockey',picture='hockey.jpg')
 session.add(Hockey)
 session.commit()
 
@@ -57,7 +57,7 @@ soccerShort = CategoryItem(name='Umbro Youth Knit Soccer Shorts', description='G
 +'lightweight, regular fit training shorts are equipped with moisture-wicking '
 +'performance for cool, dry wear and excellent breathability. An elastic '
 +'waistband is complete with an internal drawcord for a secure, adjustable fit.'
-,price='$9.97',picture_url='img/soccer-shorts.png',category=Soccer)
+,price='$9.97',picture='soccer-shorts.png',category=Soccer)
 session.add(soccerShort)
 session.commit()
 
@@ -66,7 +66,7 @@ soccerBall = CategoryItem(name='Nike Barcelona Pitch Soccer Ball', description='
 +'Barcelona Pitch Soccer Ball. The Pitch features a durable TPU casing and '
 +'machine-stitched panels, which help minimize potential abrasions and tears '
 +'as you continue to develop various skills.',price='$25.00',
-picture_url='img/soccer-ball.png',category=Soccer)
+picture='soccer-ball.png',category=Soccer)
 session.add(soccerBall)
 session.commit()
 
@@ -79,7 +79,7 @@ description='Just when you thought the technology could not get more advanced in
 +'experience. The adidas Nemeziz Messi 17+ 360 Agility FG soccer cleat has a '
 +'lightweight TORSIONFRAME outsole with TORSION RIBS that provide exceptional '
 +'power, speed and push off support on natural grass pitches.'
-,price='$289.99',picture_url='img/soccer-shoes.png',category=Soccer)
+,price='$289.99',picture='soccer-shoes.png',category=Soccer)
 session.add(soccerShoes)
 session.commit()
 
@@ -92,7 +92,7 @@ description='The preferred ball of many high school and college athletes, '
 +'and unmatched durability. Constructed with a microfiber cover that is '
 +'exclusively designed for the indoor court, the Wilson Official Evolution '
 +'Game Basketball is a true champion.',price='$59.99',
-picture_url='img/basketball-ball.png',category=BasketBall)
+picture='basketball-ball.png',category=BasketBall)
 session.add(BasketballBall)
 session.commit()
 
@@ -103,7 +103,7 @@ BasketballShirt = CategoryItem(name='Nike Mens Dry Showtime Full Zip Basketball 
 +'optimal peripheral vision and hearing. Shaped, elastic cuffs secure the fit, '
 +'and side vents promote a full range of motion. Never crash under pressure '
 +'again with the Dry Showtime Full Zip hoodie.',price='$90.00',
-picture_url='img/basketball-shirt.png',category=BasketBall)
+picture='basketball-shirt.png',category=BasketBall)
 session.add(BasketballShirt)
 session.commit()
 
@@ -116,7 +116,7 @@ BasketballShoes = CategoryItem(name='adidas Mens Dual Threat 2017 Basketball '
 +'circular traction outsole provides impressive grip perfect for fast cuts and '
 +'quick directional changes. Rubber is used in the outsole to add durability, '
 +'while synthetic overlays increase stability in key areas.',price='$44.98',
-picture_url='img/basketball-shoes.png',category=BasketBall)
+picture='basketball-shoes.png',category=BasketBall)
 session.add(BasketballShoes)
 session.commit()
 
@@ -129,7 +129,7 @@ description='The Nokona 11.5 inches Classic Walnut Series Glove will deliver the
 +'supple once broken in, but remains sturdy and strong season after season. '
 +'The 11.5 inches Classic Walnut Baseball Glove features a Modified Trap web that is '
 +'perfect for any infield position.',price='$239.99',
-picture_url='img/baseball-gloves.png',category=BaseBall)
+picture='baseball-gloves.png',category=BaseBall)
 session.add(BaseballGloves)
 session.commit()
 
@@ -140,14 +140,14 @@ description='The Under Armour OSFM Batting Helmet offers superior protection '
 +'comfort as the game heats up. Wrapped earpieces ensure greater durability '
 +'and performance all season long. the UA Batting Helmet also features '
 +'pre-mounted hardware for optional facemask attachment .',price='$27.97',
-picture_url='img/baseball-helmet.png',category=BaseBall)
+picture='baseball-helmet.png',category=BaseBall)
 session.add(BaseballHelmet)
 session.commit()
 
 BaseballBats = CategoryItem(name='Easton S750 USA Youth Bat 2018',
 description='Designed with a durable aluminum barrel, the 2018 Easton S750 '
 +'USA Bat also includes an extended barrel design to enlarge the sweet spot.',
-price='$99.99',picture_url='img/baseball-bats.png',category=BaseBall)
+price='$99.99',picture='baseball-bats.png',category=BaseBall)
 session.add(BaseballBats)
 session.commit()
 
@@ -160,7 +160,7 @@ description='Whether you are joining tournament play or just playing with '
 +'for keeping track of your place on the course without hindering the throws of'
 +'other players. It is necessary for tournament play and a nice courtesy among '
 +'friends as well. Keep your course player-friendly by using the Mini Marker Disc.',
-price='$1.50',picture_url='img/frisbee-disk.png',category=Frisbee)
+price='$1.50',picture='frisbee-disk.png',category=Frisbee)
 session.add(FrisbeeDisk)
 session.commit()
 
@@ -172,7 +172,7 @@ description='Made for a better view, the Giro Adult Verge Zoom Snow Goggles '
 +'View technology for a wider field of view, while the thermoformed lenses '
 +'team up with anti-fog coating for a clear, optimal view. A mid-size frame '
 +'with plush foam keeps you comfortable all season long.', price='$17.99',
-picture_url='img/snowboarding-goggles.png',category=SnowBoarding)
+picture='snowboarding-goggles.png',category=SnowBoarding)
 session.add(SnowBoardingGoggles)
 session.commit()
 
@@ -183,7 +183,7 @@ description='Designed specifically for budding snowboarders aged two through '
 +'beginners. The grippy EVA foot pad helps little ones stay on the board, and '
 +'the included Riglet Reel makes it easy to pull your little one around so they '
 +'can get used to the feel of the board.', price='$99.95',
-picture_url='img/snowboarding-boards.png',category=SnowBoarding)
+picture='snowboarding-boards.png',category=SnowBoarding)
 session.add(SnowBoardingBoards)
 session.commit()
 
@@ -194,31 +194,63 @@ description='For an easy and convenient way to tote your sleeping bag on your '
 +'next camping or backpacking trip, try the Coghlans Sleeping Bag Bungee '
 +'Cords. You can rest assured knowing your sleeping bag is secure using the '
 +'two included 30 inches long cords.', price='$2.49',
-picture_url='img/rockclimbing-cords.png',category=RockClimbing)
+picture='rockclimbing-cords.png',category=RockClimbing)
 session.add(RockClimbingCords)
 session.commit()
 
 RockClimbingCords = CategoryItem(name='Nite Ize S-Biner Ahhh Carabiner and '
-+'Bottle Opener',description='With the Nite Ize® S-Biner® Ahhh Carabiner and '
++'Bottle Opener',description='With the Nite Ize S-Biner Ahhh Carabiner and '
 +'Bottle Opener you can be both practical and the life of the party at the '
-+'same time! Both ends of the S-Biner® feature a carabiner with a gate '
++'same time! Both ends of the S-Biner feature a carabiner with a gate '
 +'closure, so you can clip one end and hang or store keys, water bottles, '
 +'lanterns and more from the other end. Best of all, either side functions as '
-+'a bottle opener, so you’re always prepared when you get thirsty.', price='$2.99',
-picture_url='img/rockclimbing-opener.png',category=RockClimbing)
++'a bottle opener, so you are always prepared when you get thirsty.', price='$2.99',
+picture='rockclimbing-opener.png',category=RockClimbing)
 session.add(RockClimbingCords)
 session.commit()
 
 
 #items for Hiking
-RockClimbingCords = CategoryItem(name='Coghlans Sleeping Bag Bungee Cords',
-description='For an easy and convenient way to tote your sleeping bag on your '
-+'next camping or backpacking trip, try the Coghlans Sleeping Bag Bungee '
-+'Cords. You can rest assured knowing your sleeping bag is secure using the '
-+'two included 30 inches long cords.', price='$2.49',
-picture_url='img/rockclimbing-cords.png',category=Hiking)
-session.add(RockClimbingCords)
+HikingBackPack = CategoryItem(name='Marmot Gunnison 32.5L Daypack',
+description='You will love the versatility of the Marmot Gunnison 32.5L '
++'Daypack. Conveniently haul your school books, or hiking gear in this '
++'comfortable pack with dual-density back panel and S-curved shoulder straps. '
++'Keep your gear exactly where you need it with organizational pockets, padded '
++'laptop sleeve and a pocket for your MP3 player or cell phone. Whether you are '
++'hiking the trail or heading to class, the Gunnison has you covered!',
+price='$71.99',picture='hiking-backpack.png',category=Hiking)
+session.add(HikingBackPack)
 session.commit()
 
+HikingSleepingBag = CategoryItem(name='Field & Stream Fairbanks -20 Sleeping Bag',
+description='The Field & Stream Fairbanks Sleeping Bag keeps you comfortable '
++'for cold weather camping. An impressive -20 degrees temperature rating with '
++'a double layer construction, this bag eliminates colds spots and is ideal '
++'for outdoor adventures in the spring, fall and winter. You will enjoy the '
++'comfort collar and hood to block out cold bitter, air on winter nights. '
++'This bag boasts a zip pocket on the front for stashing your cell phone '
++'overnight.', price='$139.99', picture='hiking-sleepingbag.png',
+category=Hiking)
+session.add(HikingSleepingBag)
+session.commit()
+
+
+#items for Hiking
+HockeyStick = CategoryItem(name='Mylec Senior MK1 ABS Street Hockey Stick',
+description='Engineered to meet the hazardous conditions on rugged surfaces, '
++'the Mylec Senior MK1 ABS Street Hockey Stick is strategically designed with '
++'composite integrations throughout the blade to minimize cracks during hard '
++'shots and passes in the offensive zone.', price='$19.99',
+picture='hockey-stick.png',category=Hockey)
+session.add(HockeyStick)
+session.commit()
+
+HockeyPads = CategoryItem(name='CCM Youth QLT Edge Ice Hockey Shoulder Pads',
+description='The CCM QLT Edge Shoulder Pads feature lightweight PE Foam '
++'construction to enhanced maneuverability and offer impact protection so you '
++'can work the corners and stay in control of the game.', price='$24.99',
+picture='hockey-pads.png',category=Hockey)
+session.add(HockeyPads)
+session.commit()
 
 print("added menu items!")

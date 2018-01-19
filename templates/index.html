@@ -1,124 +1,42 @@
 {% extends 'layout.html' %} {% block body %}
 <main class="" id="main-collapse">
 
-<div class="hero-full-wrapper">
-  <div class="grid">
-  <div class="gutter-sizer"></div>
-    <div class="grid-sizer"></div>
+  <div class="hero-full-wrapper">
+    <div class="grid">
+      <div class="gutter-sizer"></div>
+      <div class="grid-sizer"></div>
 
-    <div class="grid-item">
-      <img class="img-responsive" alt="" src="{{ url_for('static', filename='12.jpg') }}">
-      <a href="./project.html" class="project-description">
-        <div class="project-text-holder">
-          <div class="project-text-inner">
-            <h3>Soccer</h3>
-            <p>Discover more</p>
+      {% for category in categories %}
+      <div class="grid-item">
+        <img class="img-responsive" alt="" src="static/{{category.picture}}">
+        <a href="./{{category.id}}" class="project-description">
+          <div class="project-text-holder">
+            <div class="project-text-inner">
+              <h3>{{category.name}}</h3>
+              <p>Discover more</p>
+            </div>
           </div>
-        </div>
-      </a>
-    </div>
+        </a>
+      </div>
+      {% endfor %}
 
-
-    <div class="grid-item">
-      <img class="img-responsive" alt="" src="{{ url_for('static', filename='5.jpg') }}">
-      <a href="./project.html" class="project-description">
-        <div class="project-text-holder">
-          <div class="project-text-inner">
-            <h3>Baseball</h3>
-            <p>Discover more</p>
-          </div>
-        </div>
-      </a>
     </div>
-
-    <div class="grid-item">
-      <img class="img-responsive" alt="" src="{{ url_for('static', filename='13.jpg') }}">
-      <a href="./project.html" class="project-description">
-        <div class="project-text-holder">
-          <div class="project-text-inner">
-            <h3>BasketBall</h3>
-            <p>Discover more</p>
-          </div>
-        </div>
-      </a>
-    </div>
-
-    <div class="grid-item">
-      <img class="img-responsive" alt="" src="{{ url_for('static', filename='4.jpg') }}">
-      <a href="./project.html" class="project-description">
-        <div class="project-text-holder">
-          <div class="project-text-inner">
-            <h3>SnowBoarding</h3>
-            <p>Discover more</p>
-          </div>
-        </div>
-      </a>
-    </div>
-
-    <div class="grid-item">
-      <img class="img-responsive" alt="" src="{{ url_for('static', filename='7.jpg') }}">
-      <a href="./project.html" class="project-description">
-        <div class="project-text-holder">
-          <div class="project-text-inner">
-            <h3>Frisbee</h3>
-            <p>Discover more</p>
-          </div>
-        </div>
-      </a>
-    </div>
-
-    <div class="grid-item">
-      <img class="img-responsive" alt="" src="{{ url_for('static', filename='11.jpg') }}">
-      <a href="./project.html" class="project-description">
-        <div class="project-text-holder">
-          <div class="project-text-inner">
-            <h3>RockClimbing</h3>
-            <p>Discover more</p>
-          </div>
-        </div>
-      </a>
-    </div>
-
-    <div class="grid-item">
-      <img class="img-responsive" alt="" src="{{ url_for('static', filename='10.jpg') }}">
-      <a href="./project.html" class="project-description">
-        <div class="project-text-holder">
-          <div class="project-text-inner">
-            <h3>Hiking</h3>
-            <p>Discover more</p>
-          </div>
-        </div>
-      </a>
-    </div>
-    <div class="grid-item">
-      <img class="img-responsive" alt="" src="{{ url_for('static', filename='3.jpg') }}">
-      <a href="./project.html" class="project-description">
-        <div class="project-text-holder">
-          <div class="project-text-inner">
-            <h3>Hockey</h3>
-            <p>Discover more</p>
-          </div>
-        </div>
-      </a>
-    </div>
-
   </div>
-</div>
 
 
-<script>
-  document.addEventListener("DOMContentLoaded", function (event) {
-     masonryBuild();
-  });
-</script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function(event) {
+      masonryBuild();
+    });
+  </script>
 
 </main>
 
 <script>
-document.addEventListener("DOMContentLoaded", function (event) {
-  navbarToggleSidebar();
-  navActivePage();
-});
+  document.addEventListener("DOMContentLoaded", function(event) {
+    navbarToggleSidebar();
+    navActivePage();
+  });
 </script>
 
 <script type="text/javascript" src="{{ url_for('static', filename='main.85741bff.js') }}"></script>

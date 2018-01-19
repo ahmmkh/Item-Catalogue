@@ -1,5 +1,5 @@
 from flask import Flask, render_template
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, asc
 from sqlalchemy.orm import sessionmaker
 from database_setup import Category, CategoryItem, Base
 
@@ -11,13 +11,15 @@ Base.metadata.bind = engine
 DBSession = sessionmaker(bind=engine)
 session = DBSession()
 
-@app.route('/layout')
-def layout():
-    return render_template('layout.html')
-
 @app.route('/')
+@app.route('/categories')
 def index():
-    return render_template('index.html')
+    categories = session.query(Category).order_by(asc(Category.name))
+    return render_template('index.html',categories=categories)
+
+@app.route('/categories/<int:category_id>')
+def showCategory(category_id):
+    category = session.query(Category).filter_by(id=category_id).one()
 
 @app.route('/about')
 def about():
