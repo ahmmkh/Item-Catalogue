@@ -11,6 +11,9 @@ Base.metadata.bind = engine
 DBSession = sessionmaker(bind=engine)
 session = DBSession()
 
+@app.route('/layout')
+def layout():
+    return render_template('layout.html')
 
 @app.route('/')
 def index():

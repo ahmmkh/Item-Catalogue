@@ -39,6 +39,18 @@ SnowBoarding = Category(name='SnowBoarding')
 session.add(SnowBoarding)
 session.commit()
 
+RockClimbing = Category(name='SnowBoarding')
+session.add(RockClimbing)
+session.commit()
+
+Hiking = Category(name='SnowBoarding')
+session.add(Hiking)
+session.commit()
+
+Hockey = Category(name='SnowBoarding')
+session.add(Hockey)
+session.commit()
+
 #items for soccer
 soccerShort = CategoryItem(name='Umbro Youth Knit Soccer Shorts', description='Gear your '
 +'young athlete up for success with the Umbro Youth Knit Soccer Shorts. These '
@@ -173,6 +185,39 @@ description='Designed specifically for budding snowboarders aged two through '
 +'can get used to the feel of the board.', price='$99.95',
 picture_url='img/snowboarding-boards.png',category=SnowBoarding)
 session.add(SnowBoardingBoards)
+session.commit()
+
+
+#items for RockClimbing
+RockClimbingCords = CategoryItem(name='Coghlans Sleeping Bag Bungee Cords',
+description='For an easy and convenient way to tote your sleeping bag on your '
++'next camping or backpacking trip, try the Coghlans Sleeping Bag Bungee '
++'Cords. You can rest assured knowing your sleeping bag is secure using the '
++'two included 30 inches long cords.', price='$2.49',
+picture_url='img/rockclimbing-cords.png',category=RockClimbing)
+session.add(RockClimbingCords)
+session.commit()
+
+RockClimbingCords = CategoryItem(name='Nite Ize S-Biner Ahhh Carabiner and '
++'Bottle Opener',description='With the Nite Ize® S-Biner® Ahhh Carabiner and '
++'Bottle Opener you can be both practical and the life of the party at the '
++'same time! Both ends of the S-Biner® feature a carabiner with a gate '
++'closure, so you can clip one end and hang or store keys, water bottles, '
++'lanterns and more from the other end. Best of all, either side functions as '
++'a bottle opener, so you’re always prepared when you get thirsty.', price='$2.99',
+picture_url='img/rockclimbing-opener.png',category=RockClimbing)
+session.add(RockClimbingCords)
+session.commit()
+
+
+#items for Hiking
+RockClimbingCords = CategoryItem(name='Coghlans Sleeping Bag Bungee Cords',
+description='For an easy and convenient way to tote your sleeping bag on your '
++'next camping or backpacking trip, try the Coghlans Sleeping Bag Bungee '
++'Cords. You can rest assured knowing your sleeping bag is secure using the '
++'two included 30 inches long cords.', price='$2.49',
+picture_url='img/rockclimbing-cords.png',category=Hiking)
+session.add(RockClimbingCords)
 session.commit()
 
 
