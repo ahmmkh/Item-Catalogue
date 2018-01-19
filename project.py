@@ -32,6 +32,9 @@ def contact():
 def services():
     return render_template('services.html')
 
+@app.route('/project.html')
+def project():
+    return render_template('project.html')
 
 if __name__ == '__main__':
     app.secret_key = 'super_secret_key'
