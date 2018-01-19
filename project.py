@@ -20,6 +20,9 @@ def index():
 @app.route('/categories/<int:category_id>')
 def showCategory(category_id):
     category = session.query(Category).filter_by(id=category_id).one()
+    category_items = session.query(CategoryItem).filter_by(
+    category_id=category_id).all()
+    return render_template('project.html',category=category,category_items=category_items)
 
 @app.route('/about')
 def about():
