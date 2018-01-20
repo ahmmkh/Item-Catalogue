@@ -17,12 +17,18 @@ def index():
     categories = session.query(Category).order_by(asc(Category.name))
     return render_template('index.html',categories=categories)
 
-@app.route('/categories/<int:category_id>')
-def showCategory(category_id):
-    category = session.query(Category).filter_by(id=category_id).one()
+@app.route('/categories/<category>')
+def showCategory(category):
+    category = session.query(Category).filter_by(name=category).one()
     category_items = session.query(CategoryItem).filter_by(
-    category_id=category_id).all()
-    return render_template('project.html',category=category,category_items=category_items)
+    category_id=category.id).all()
+    return render_template('category.html',category=category,category_items=category_items)
+
+@app.route('/categories/<category>/<int:item_id>')
+def showItem(category,item_id):
+    category = session.query(Category).filter_by(name=category).one()
+    item = session.query(CategoryItem).filter_by(id=item_id).one()
+    return render_template('category_item.html',category=category,category_item=item)
 
 @app.route('/about')
 def about():

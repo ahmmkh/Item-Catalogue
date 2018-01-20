@@ -1,0 +1,29 @@
+{% extends 'layout.html' %} {% block body %}
+<main class="" id="main-collapse">
+
+
+  <div class="row">
+
+    <div class="section-container-spacer">
+      <h1>{{category.name}}</h1>
+    </div>
+    {% for category_item in category_items %}
+    <div class="col-lg-4">
+      <img class="img-circle" src="/static/{{category_item.picture}}" width="140" height="140">
+      <h2>{{category_item.name}}</h2>
+      <p><a class="btn btn-default" href="{{category.name}}/{{category_item.id}}" role="button">View details »</a></p>
+    </div>
+    {% endfor %}
+  </div>
+
+</main>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    navbarToggleSidebar();
+    navActivePage();
+  });
+</script>
+
+<script type="text/javascript" src="./main.85741bff.js"></script>
+{% endblock %}

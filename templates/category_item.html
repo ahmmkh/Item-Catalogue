@@ -1,26 +1,22 @@
 {% extends 'layout.html' %} {% block body %}
 <main class="" id="main-collapse">
 
-
   <div class="row">
     <div class="col-xs-12 col-md-9">
 
       <div class="section-container-spacer">
-        <h1>{{category.name}}</h1>
+        <h1>{{category_item.name}}</h1>
       </div>
-
-    {% for category_item in category_items %}
       <div class="section-container-spacer">
         <h3>{{category_item.name}} - {{category_item.price}}</h3>
         <p><img class="img-responsive" alt="" src="/static/{{category_item.picture}}"></p>
         <p>{{category_item.description}}</p>
         <br>
       </div>
-    {% endfor %}
+      <p><a class="btn btn-default" href="/categories/{{category.name}}" role="button">Go Back »</a></p>
     </div>
 
   </div>
-
 
 
 </main>
@@ -32,5 +28,5 @@
   });
 </script>
 
-<script type="text/javascript" src="./main.85741bff.js"></script>
+<script type="text/javascript" src="/static/main.85741bff.js"></script>
 {% endblock %}
