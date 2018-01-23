@@ -1,0 +1,54 @@
+{% extends 'layout.html' %} {% block body %}
+<style>
+  @import url('https://fonts.googleapis.com/css?family=Roboto');
+  input {
+    color: white;
+    border: 2px solid white;
+    background: transparent;
+    font-size: 18px;
+    position: relative;
+    left: 0;
+    height: auto;
+    padding: 20px 20px;
+    margin-top: 10px;
+  }
+
+  ::-webkit-input-placeholder {
+    /* Chrome */
+    color: white;
+  }
+
+  form {
+    width: 90%;
+    max-width: 375px;
+    margin: 60px auto;
+  }
+  h3 {
+    color:white;
+    font-size:30px;
+    font-family:'Roboto';
+    text-align:center;"
+  }
+</style>
+<main class="" id="main-collapse">
+  <div class="col-md-6" style="background:url('{{ url_for('static', filename='popup.jpg') }}')">
+    <h3>
+    New Category
+    </h3>
+    <form method="post" enctype=multipart/form-data action="{{ url_for('newCategory') }}">
+      <input type="text" name="name" placeholder="Enter name of Category"/>
+      <input type="file" id="files" name="photo" multiple="multiple"/>
+      <p style="text-align: right; margin-top: 20px;">
+        <a href="/" class="btn btn-lg btn-primary">Cancel</a>
+        <input type="submit" value="Add Category" class="btn btn-lg btn-primary" style="margin-top:0;"/>
+      </p>
+    </form>
+  </div>
+  <div class="col-md-4"></div>
+</main>
+
+<!-- you need to include the ShieldUI CSS and JS assets in order for the Upload widget to work -->
+<link rel="stylesheet" type="text/css" href="http://www.shieldui.com/shared/components/latest/css/light-bootstrap/all.min.css" />
+<!--<script type="text/javascript" src="http://www.shieldui.com/shared/components/latest/js/shieldui-all.min.js"></script>
+-->
+{% endblock %}

@@ -1,9 +1,17 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, url_for, redirect
+from flask_uploads import UploadSet, configure_uploads, IMAGES
 from sqlalchemy import create_engine, asc
 from sqlalchemy.orm import sessionmaker
 from database_setup import Category, CategoryItem, Base
 
 app = Flask(__name__)
+
+# Instantiate the uploads object
+photos = UploadSet('photos', IMAGES)
+
+# Providing upload destination
+app.config['UPLOADED_PHOTOS_DEST'] = 'static/'
+configure_uploads(app, photos)
 
 # Connect to Database and create database session
 engine = create_engine('sqlite:///items.db')
@@ -33,6 +41,23 @@ def showItem(category,item_id):
     category = session.query(Category).filter_by(name=category).one()
     item = session.query(CategoryItem).filter_by(id=item_id).one()
     return render_template('category_item.html',category=category,category_item=item)
+
+# Add a new category
+@app.route('/categories/new', methods=['GET', 'POST'])
+def newCategory():
+    if request.method == 'POST' and 'photo' in request.files:
+        filename = photos.save(request.files['photo'])
+        newCategory = Category(
+            name=request.form['name'],
+            picture = filename)
+        session.add(newCategory)
+        #print(filename)
+        #print(newCategory.picture)
+        #flash('New Category %s Successfully Created' % newCategory.name)
+        session.commit()
+        return redirect(url_for('index'))
+    else:
+        return render_template('newCategory.html')
 
 # Show about page
 @app.route('/about')
