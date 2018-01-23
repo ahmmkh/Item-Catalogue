@@ -51,13 +51,27 @@ def newCategory():
             name=request.form['name'],
             picture = filename)
         session.add(newCategory)
-        #print(filename)
-        #print(newCategory.picture)
         #flash('New Category %s Successfully Created' % newCategory.name)
         session.commit()
         return redirect(url_for('index'))
     else:
         return render_template('newCategory.html')
+
+# Delete a category
+@app.route('/categories/<category>/delete', methods=['GET', 'POST'])
+def deleteCategory(category):
+    categoryToDelete = session.query(Category).filter_by(name=category).one()
+    print("succeed1")
+    if request.method == 'POST':
+        print("succeed")
+        session.delete(categoryToDelete)
+        #os.remove(os.path.join(app.config['UPLOADED_ITEMS_DEST'], categoryToDelete.filename))
+        #flash('New Category %s Successfully Created' % newCategory.name)
+        session.commit()
+        return redirect(url_for('index'))
+    else:
+        return render_template('deleteCategory.html',category=category)
+
 
 # Show about page
 @app.route('/about')
