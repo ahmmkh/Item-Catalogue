@@ -14,7 +14,8 @@
       <p><a class="btn btn-default" href="{{category.name}}/{{category_item.id}}" role="button">View details »</a></p>
     </div>
     {% endfor %}
-    <p style="float:right;"><a class="btn btn-danger" href="/categories/{{category.name}}/delete" role="button">Delete This Category</a></p>
+    <p style="position:absolute;bottom:5px;right:2%;"><a class="btn btn-danger" href="/categories/{{category.name}}/delete" role="button">Delete This Category</a></p>
+    <p style="position:absolute;bottom:5px;right:15%;"><a class="btn btn-success" href="/categories/{{category.name}}/newitem" role="button">Add a New Item</a></p>
   </div>
 
 </main>
