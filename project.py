@@ -63,7 +63,6 @@ def deleteCategory(category):
     categoryToDelete = session.query(Category).filter_by(name=category).one()
     print("succeed1")
     if request.method == 'POST':
-        print("succeed")
         session.delete(categoryToDelete)
         #os.remove(os.path.join(app.config['UPLOADED_ITEMS_DEST'], categoryToDelete.filename))
         #flash('New Category %s Successfully Created' % newCategory.name)
@@ -71,6 +70,12 @@ def deleteCategory(category):
         return redirect(url_for('index'))
     else:
         return render_template('deleteCategory.html',category=category)
+
+# Add a new item
+@app.route('/categories/<category>/newitem', methods=['GET', 'POST'])
+def addNewItem(category):
+    categoryForItems = session.query(Category).filter_by(name=category).one()
+    return render_template('newItem.html',category=category)
 
 
 # Show about page
