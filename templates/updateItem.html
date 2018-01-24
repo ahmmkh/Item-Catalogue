@@ -1,0 +1,57 @@
+{% extends 'layout.html' %} {% block body %}
+<style>
+  @import url('https://fonts.googleapis.com/css?family=Roboto');
+  .width {
+    width: 100%;
+  }
+
+  input,
+  textarea {
+    color: white;
+    border: 2px solid white;
+    background: transparent;
+    font-size: 18px;
+    position: relative;
+    left: 0;
+    height: auto;
+    padding: 20px 20px;
+    margin-top: 10px;
+  }
+
+  ::-webkit-input-placeholder {
+    /* Chrome */
+    color: white;
+  }
+
+  form {
+    width: 90%;
+    max-width: 375px;
+    margin: 60px auto;
+  }
+
+  h3 {
+    color: white;
+    font-size: 30px;
+    font-family: 'Roboto';
+    text-align: center;
+    "
+
+  }
+</style>
+<main class="" id="main-collapse">
+  <div class="col-md-6" style="background:url('{{ url_for('static', filename='popup.jpg') }}')">
+    <h3>Update item: {{item.name}}</h3>
+    <form method="post" enctype=multipart/form-data action="{{ url_for('updateItem',category=category.name,item_id=item.id) }}">
+      <input class="width" type="text" name="name" placeholder="{{item.name}}?" />
+      <input class="width" type="text" name="price" placeholder="{{item.price}}?" />
+      <textarea class="width" type="textarea" name="description" placeholder="{{item.description}}?" maxlength="240" rows="7"></textarea>
+      <input class="width" type="file" id="files" name="photo" multiple="multiple" />
+      <p style="text-align: right; margin-top: 20px;">
+        <a href="/" class="btn btn-lg btn-primary">Cancel</a>
+        <input type="submit" value="Update Item" class="btn btn-lg btn-primary" style="margin-top:0;" />
+      </p>
+    </form>
+  </div>
+</main>
+
+{% endblock %}

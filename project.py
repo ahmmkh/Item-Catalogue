@@ -61,7 +61,22 @@ def deleteItem(category,item_id):
 def updateItem(category,item_id):
     category = session.query(Category).filter_by(name=category).one()
     item = session.query(CategoryItem).filter_by(id=item_id).one()
-    return render_template('updateItem.html', category=category, item=item)
+    if request.method == 'POST':
+        if request.form['name']:
+            item.name = request.form['name']
+        if request.form['description']:
+            item.description = request.form['description']
+        if request.form['price']:
+            item.price = request.form['price']
+        if 'photo' in request.files:
+            filename = photos.save(request.files['photo'])
+            item.picture = filename
+        session.add(item)
+        #flash('New Category %s Successfully Created' % newCategory.name)
+        session.commit()
+        return redirect(url_for('index'))
+    else:
+        return render_template('updateItem.html', category=category, item=item)
 
 # Add a new category
 @app.route('/categories/new', methods=['GET', 'POST'])
