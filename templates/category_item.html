@@ -13,7 +13,11 @@
         <p>{{category_item.description}}</p>
         <br>
       </div>
-      <p><a class="btn btn-default" href="/categories/{{category.name}}" role="button">Go Back »</a></p>
+      <div style="display:flex;justify-content:flex-end;">
+        <p><a class="btn btn-default" href="/categories/{{category.name}}" role="button" style="margin:5px;">Go Back »</a></p>
+        <p><a class="btn btn-success" href="/{{category.name}}/{{category_item.id}}/updateItem" role="button" style="margin:5px;">Update This Item</a></p>
+        <p><a class="btn btn-danger" href="/{{category.name}}/{{category_item.id}}/deleteItem" role="button" style="margin:5px;">Delete This Item</a></p>
+      </div>
     </div>
 
   </div>

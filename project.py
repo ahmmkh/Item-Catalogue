@@ -42,6 +42,27 @@ def showItem(category,item_id):
     item = session.query(CategoryItem).filter_by(id=item_id).one()
     return render_template('category_item.html',category=category,category_item=item)
 
+# Delete a single Item
+@app.route('/<category>/<int:item_id>/deleteItem', methods=['GET', 'POST'])
+def deleteItem(category,item_id):
+    category = session.query(Category).filter_by(name=category).one()
+    item = session.query(CategoryItem).filter_by(id=item_id).one()
+    if request.method == 'POST':
+        session.delete(item)
+        #os.remove(os.path.join(app.config['UPLOADED_ITEMS_DEST'], item.filename))
+        #flash('New Category %s Successfully Created' % newCategory.name)
+        session.commit()
+        return redirect(url_for('index'))
+    else:
+        return render_template('deleteItem.html', category=category, item=item)
+
+# Update a single Item
+@app.route('/<category>/<int:item_id>/updateItem', methods=['GET', 'POST'])
+def updateItem(category,item_id):
+    category = session.query(Category).filter_by(name=category).one()
+    item = session.query(CategoryItem).filter_by(id=item_id).one()
+    return render_template('updateItem.html', category=category, item=item)
+
 # Add a new category
 @app.route('/categories/new', methods=['GET', 'POST'])
 def newCategory():
