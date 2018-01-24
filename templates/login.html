@@ -140,9 +140,7 @@
   }
 </style>
 <div class="container">
-
-  <script id="metamorph-1-start" type="text/x-placeholder"></script>
-  <script id="metamorph-21-start" type="text/x-placeholder"></script>
+  <div id="result"></div>
 
   <div class="container text-center">
     <form class="form-signin" data-ember-action="2">
@@ -153,11 +151,8 @@
 
 
       <p>
-        <!--FACEBOOK SIGN IN BUTTON
-        <a class="btn btn-primary social-login-btn social-facebook fb-login-button" data-max-rows="1" data-size="medium" data-button-type="login_with" data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="true" scope="public_profile,email"
-          onlogin="checkLoginState();">
-          <i class="fa fa-facebook"></i></a>-->
-          <div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="login_with" data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="false"></div>
+        <!--FACEBOOK SIGN IN BUTTON-->
+          <div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="login_with" data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="false" scope="public_profile,email" onlogin="sendTokenToServer();"></div>
 
         <!--TWITTER SIGN IN BUTTON-->
         <a class="btn btn-primary social-login-btn social-twitter" href="/auth/twitter"><i class="fa fa-twitter"></i></a>
@@ -182,7 +177,7 @@
 <script>
   window.fbAsyncInit = function() {
     FB.init({
-      appId: '846524132078825',
+      appId: '199024740676610',
       cookie: true, // enable cookies to allow the server to access
       // the session
       xfbml: true, // parse social plugins on this page
@@ -215,9 +210,10 @@
         success: function(result) {
           // Handle or verify the server response if necessary.
           if (result) {
-            $('#result').html('Login Successful!</br>' + result + '</br>Redirecting...')
+            $('#result').html('Login Successful!</br>' + result + '</br>Redirecting...');
+            $('.text-center').css('display','none');
             setTimeout(function() {
-              window.location.href = "/restaurant";
+              window.location.href = "/";
             }, 4000);
 
           } else {

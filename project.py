@@ -71,9 +71,9 @@ def fbconnect():
         return response
 
     access_token = request.data
-    print "access token received {} ".format(access_token)
+    #print "access token received {} ".format(access_token)
 
-
+    #Exchange client token for a long-lived server-side token
     app_id = json.loads(open('fb_client_secrets.json', 'r').read())[
         'web']['app_id']
     app_secret = json.loads(
@@ -102,24 +102,26 @@ def fbconnect():
     # The token must be stored in the login_session in order to properly logout
     login_session['access_token'] = token
 
+    # Get user picture
+    url = 'https://graph.facebook.com/v2.8/me/picture?access_token=%s&redirect=0&height=200&width=200' % token
+    h = httplib2.Http()
+    result = h.request(url, 'GET')[1]
+    data = json.loads(result)
+
+    login_session['picture'] = data["data"]["url"]
+
     # see if user exists
     user_id = getUserID(login_session['email'])
+    print user_id
     if not user_id:
         user_id = createUser(login_session)
+        print "created user_id"
+        print user_id
 
     login_session['user_id'] = user_id
 
-    output = ''
-    output += '<h1>Welcome, '
-    output += login_session['username']
-
-    output += '!</h1>'
-    output += '<img src="'
-    output += login_session['picture']
-    output += ' " style = "width: 300px; height: 300px;border-radius: 150px;-webkit-border-radius: 150px;-moz-border-radius: 150px;"> '
-
-    flash("Now logged in as {}".format(login_session['username']))
-    return output
+    return render_template('hello.html',username=login_session['username'],picture=login_session['picture'],userID=login_session['user_id'])
+    #flash("Now logged in as {}".format(login_session['username']))
 
 @app.route('/fbdisconnect')
 def fbdisconnect():
@@ -199,7 +201,7 @@ def addNewItem(category):
     if 'username' not in login_session:
         return redirect('/login')
     categoryForItems = session.query(Category).filter_by(name=category).one()
-    if login_session['user_id'] != category.user_id:
+    if login_session['user_id'] != categoryForItems.user_id:
         return "<script>function myFunction() {"
         +"alert('You are not authorized to add items to this category. "
         +"Please create your own category in order to add items.');}"
@@ -289,10 +291,10 @@ def disconnect():
         del login_session['picture']
         del login_session['user_id']
         del login_session['provider']
-        flash("You have successfully been logged out.")
+        #flash("You have successfully been logged out.")
         return redirect(url_for('index'))
     else:
-        flash("You were not logged in")
+        #flash("You were not logged in")
         return redirect(url_for('index'))
 
 # Show about page

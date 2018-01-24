@@ -45,7 +45,7 @@
           {% if 'username' not in session %}
           <small class="text-muted">Not signed in? <a href="/login">Sign in now!</a></small>
           {% else %}
-          <small class="text-muted">Hello {{session['username']}}!<a href="/logout">Disconnect from here</a></small>
+          <small class="text-muted">Hello {{session['username']}}!<a href="/disconnect"> Disconnect from here</a></small>
           {% endif %}
         </div>
 

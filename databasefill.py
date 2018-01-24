@@ -19,40 +19,40 @@ DBSession = sessionmaker(bind=engine)
 session = DBSession()
 
 # Category 1
-Soccer = Category(name='Soccer',picture='soccer.jpg')
+Soccer = Category(user_id=1, name='Soccer',picture='soccer.jpg')
 session.add(Soccer)
 session.commit()
 
-BasketBall = Category(name='BasketBall',picture='basketball.jpg')
+BasketBall = Category(user_id=1, name='BasketBall',picture='basketball.jpg')
 session.add(BasketBall)
 session.commit()
 
-BaseBall = Category(name='BaseBall',picture='baseball.jpg')
+BaseBall = Category(user_id=1, name='BaseBall',picture='baseball.jpg')
 session.add(BaseBall)
 session.commit()
 
-Frisbee = Category(name='Frisbee',picture='frisbee.jpg')
+Frisbee = Category(user_id=1, name='Frisbee',picture='frisbee.jpg')
 session.add(Frisbee)
 session.commit()
 
-SnowBoarding = Category(name='SnowBoarding',picture='snowboarding.jpg')
+SnowBoarding = Category(user_id=1, name='SnowBoarding',picture='snowboarding.jpg')
 session.add(SnowBoarding)
 session.commit()
 
-RockClimbing = Category(name='RockClimbing',picture='rockclimbing.jpg')
+RockClimbing = Category(user_id=1, name='RockClimbing',picture='rockclimbing.jpg')
 session.add(RockClimbing)
 session.commit()
 
-Hiking = Category(name='Hiking',picture='hiking.jpg')
+Hiking = Category(user_id=1, name='Hiking',picture='hiking.jpg')
 session.add(Hiking)
 session.commit()
 
-Hockey = Category(name='Hockey',picture='hockey.jpg')
+Hockey = Category(user_id=1, name='Hockey',picture='hockey.jpg')
 session.add(Hockey)
 session.commit()
 
 #items for soccer
-soccerShort = CategoryItem(name='Umbro Youth Knit Soccer Shorts', description='Gear your '
+soccerShort = CategoryItem(user_id=1, name='Umbro Youth Knit Soccer Shorts', description='Gear your '
 +'young athlete up for success with the Umbro Youth Knit Soccer Shorts. These '
 +'lightweight, regular fit training shorts are equipped with moisture-wicking '
 +'performance for cool, dry wear and excellent breathability. An elastic '
@@ -61,7 +61,7 @@ soccerShort = CategoryItem(name='Umbro Youth Knit Soccer Shorts', description='G
 session.add(soccerShort)
 session.commit()
 
-soccerBall = CategoryItem(name='Nike Barcelona Pitch Soccer Ball', description='Power '
+soccerBall = CategoryItem(user_id=1, name='Nike Barcelona Pitch Soccer Ball', description='Power '
 +'through your next training session under the crest of Barca with the Nike '
 +'Barcelona Pitch Soccer Ball. The Pitch features a durable TPU casing and '
 +'machine-stitched panels, which help minimize potential abrasions and tears '
@@ -70,7 +70,7 @@ picture='soccer-ball.png',category=Soccer)
 session.add(soccerBall)
 session.commit()
 
-soccerShoes = CategoryItem(name="adidas Men's Nemeziz Messi 17+ 360 Agility FG Soccer Cleats",
+soccerShoes = CategoryItem(user_id=1, name="adidas Men's Nemeziz Messi 17+ 360 Agility FG Soccer Cleats",
 description='Just when you thought the technology could not get more advanced in your '
 +'cleats the Nemeziz Messi 17+ 360 Agility re-writes the script. An Agility '
 +'Knit 2.0 forefoot delivers a perfect fit and fantastic responsiveness from '
@@ -84,7 +84,7 @@ session.add(soccerShoes)
 session.commit()
 
 #items for BasketBall
-BasketballBall = CategoryItem(name='Wilson Evolution Official Basketball (29.5")',
+BasketballBall = CategoryItem(user_id=1, name='Wilson Evolution Official Basketball (29.5")',
 description='The preferred ball of many high school and college athletes, '
 +'the Wilson Evolution Game Basketball is among the top performers in its '
 +'class. Cushion Core Technology combines low-density sponge rubber and '
@@ -96,7 +96,7 @@ picture='basketball-ball.png',category=BasketBall)
 session.add(BasketballBall)
 session.commit()
 
-BasketballShirt = CategoryItem(name='Nike Mens Dry Showtime Full Zip Basketball '
+BasketballShirt = CategoryItem(user_id=1, name='Nike Mens Dry Showtime Full Zip Basketball '
 +'Hoodie',description='Warm up comfortably to perform like a champion in the '
 +'Nike Mens Dry Showtime Full Zip Basketball Hoodie. Its Nike Dry fabric '
 +'wicks sweat for a cool, dry feel, while the HyperAlert hood allows for '
@@ -107,7 +107,7 @@ picture='basketball-shirt.png',category=BasketBall)
 session.add(BasketballShirt)
 session.commit()
 
-BasketballShoes = CategoryItem(name='adidas Mens Dual Threat 2017 Basketball '
+BasketballShoes = CategoryItem(user_id=1, name='adidas Mens Dual Threat 2017 Basketball '
 +'Shoes',description='Designed with a mid-cut silhouette, these sneakers blend '
 +'support and stability, making them versatile enough for all positions on '
 +'court. The updated cushioning system includes a secure foam collar to '
@@ -122,7 +122,7 @@ session.commit()
 
 
 #items for BaseBall
-BaseballGloves = CategoryItem(name='Nokona 11.5 inches Classic Walnut Series Glove',
+BaseballGloves = CategoryItem(user_id=1, name='Nokona 11.5 inches Classic Walnut Series Glove',
 description='The Nokona 11.5 inches Classic Walnut Series Glove will deliver the '
 +'durability and comfort you need to perform at an optimal level. Constructed '
 +'of legendary Walnut Crunch leather, this American-made glove is soft and '
@@ -133,7 +133,7 @@ picture='baseball-gloves.png',category=BaseBall)
 session.add(BaseballGloves)
 session.commit()
 
-BaseballHelmet = CategoryItem(name='Under Armour OSFM Solid Molded Batting Helmet',
+BaseballHelmet = CategoryItem(user_id=1, name='Under Armour OSFM Solid Molded Batting Helmet',
 description='The Under Armour OSFM Batting Helmet offers superior protection '
 +'while maintaining maximum comfort. A high impact resistant ABS plastic shell '
 +'with large vents throughout the helmet offers maximum breathability for '
@@ -144,7 +144,7 @@ picture='baseball-helmet.png',category=BaseBall)
 session.add(BaseballHelmet)
 session.commit()
 
-BaseballBats = CategoryItem(name='Easton S750 USA Youth Bat 2018',
+BaseballBats = CategoryItem(user_id=1, name='Easton S750 USA Youth Bat 2018',
 description='Designed with a durable aluminum barrel, the 2018 Easton S750 '
 +'USA Bat also includes an extended barrel design to enlarge the sweet spot.',
 price='$99.99',picture='baseball-bats.png',category=BaseBall)
@@ -153,7 +153,7 @@ session.commit()
 
 
 #items for Frisbee
-FrisbeeDisk = CategoryItem(name='Innova Regular Mini Marker Disc',
+FrisbeeDisk = CategoryItem(user_id=1, name='Innova Regular Mini Marker Disc',
 description='Whether you are joining tournament play or just playing with '
 +'friends, use the Innova Regular Mini Marker Disc to mark your lie and keep '
 +'the course clean. Made from lightweight plastic, this 10 cm disc is perfect '
@@ -166,7 +166,7 @@ session.commit()
 
 
 #items for SnowBoarding
-SnowBoardingGoggles = CategoryItem(name='Giro Adult Verge Zoom Snow Goggles',
+SnowBoardingGoggles = CategoryItem(user_id=1,name='Giro Adult Verge Zoom Snow Goggles',
 description='Made for a better view, the Giro Adult Verge Zoom Snow Goggles '
 +'deliver awesome features with great performance. You will love the Expansion '
 +'View technology for a wider field of view, while the thermoformed lenses '
@@ -176,7 +176,7 @@ picture='snowboarding-goggles.png',category=SnowBoarding)
 session.add(SnowBoardingGoggles)
 session.commit()
 
-SnowBoardingBoards = CategoryItem(name='Burton Youth Riglet 2014-2015 Snowboard',
+SnowBoardingBoards = CategoryItem(user_id=1,name='Burton Youth Riglet 2014-2015 Snowboard',
 description='Designed specifically for budding snowboarders aged two through '
 +'six, the Burton Youth Riglet Snowboard will deliver hours of snow day fun. '
 +'The Flat Top ensures plenty of stability and balance, making it perfect for '
@@ -189,7 +189,7 @@ session.commit()
 
 
 #items for RockClimbing
-RockClimbingCords = CategoryItem(name='Coghlans Sleeping Bag Bungee Cords',
+RockClimbingCords = CategoryItem(user_id=1,name='Coghlans Sleeping Bag Bungee Cords',
 description='For an easy and convenient way to tote your sleeping bag on your '
 +'next camping or backpacking trip, try the Coghlans Sleeping Bag Bungee '
 +'Cords. You can rest assured knowing your sleeping bag is secure using the '
@@ -198,7 +198,7 @@ picture='rockclimbing-cords.png',category=RockClimbing)
 session.add(RockClimbingCords)
 session.commit()
 
-RockClimbingCords = CategoryItem(name='Nite Ize S-Biner Ahhh Carabiner and '
+RockClimbingCords = CategoryItem(user_id=1,name='Nite Ize S-Biner Ahhh Carabiner and '
 +'Bottle Opener',description='With the Nite Ize S-Biner Ahhh Carabiner and '
 +'Bottle Opener you can be both practical and the life of the party at the '
 +'same time! Both ends of the S-Biner feature a carabiner with a gate '
@@ -211,7 +211,7 @@ session.commit()
 
 
 #items for Hiking
-HikingBackPack = CategoryItem(name='Marmot Gunnison 32.5L Daypack',
+HikingBackPack = CategoryItem(user_id=1,name='Marmot Gunnison 32.5L Daypack',
 description='You will love the versatility of the Marmot Gunnison 32.5L '
 +'Daypack. Conveniently haul your school books, or hiking gear in this '
 +'comfortable pack with dual-density back panel and S-curved shoulder straps. '
@@ -222,7 +222,7 @@ price='$71.99',picture='hiking-backpack.png',category=Hiking)
 session.add(HikingBackPack)
 session.commit()
 
-HikingSleepingBag = CategoryItem(name='Field & Stream Fairbanks -20 Sleeping Bag',
+HikingSleepingBag = CategoryItem(user_id=1,name='Field & Stream Fairbanks -20 Sleeping Bag',
 description='The Field & Stream Fairbanks Sleeping Bag keeps you comfortable '
 +'for cold weather camping. An impressive -20 degrees temperature rating with '
 +'a double layer construction, this bag eliminates colds spots and is ideal '
@@ -236,7 +236,7 @@ session.commit()
 
 
 #items for Hiking
-HockeyStick = CategoryItem(name='Mylec Senior MK1 ABS Street Hockey Stick',
+HockeyStick = CategoryItem(user_id=1,name='Mylec Senior MK1 ABS Street Hockey Stick',
 description='Engineered to meet the hazardous conditions on rugged surfaces, '
 +'the Mylec Senior MK1 ABS Street Hockey Stick is strategically designed with '
 +'composite integrations throughout the blade to minimize cracks during hard '
@@ -245,7 +245,7 @@ picture='hockey-stick.png',category=Hockey)
 session.add(HockeyStick)
 session.commit()
 
-HockeyPads = CategoryItem(name='CCM Youth QLT Edge Ice Hockey Shoulder Pads',
+HockeyPads = CategoryItem(user_id=1,name='CCM Youth QLT Edge Ice Hockey Shoulder Pads',
 description='The CCM QLT Edge Shoulder Pads feature lightweight PE Foam '
 +'construction to enhanced maneuverability and offer impact protection so you '
 +'can work the corners and stay in control of the game.', price='$24.99',
