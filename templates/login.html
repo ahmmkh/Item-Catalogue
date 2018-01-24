@@ -1,0 +1,232 @@
+{% extends 'layout.html' %} {% block body %}
+<!--LOAD FONT-AWESOME FOR SOCIAL MEDIA SIGN IN ICONS-->
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" rel="stylesheet">
+<!--LOAD PRE-REQUISITES FOR GOOGLE SIGN IN -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script src="//apis.google.com/js/platform.js?onload=start"></script>
+
+<style>
+  @import url(http://weloveiconfonts.com/api/?family=brandico|entypo|openwebicons|zocial);
+
+  /* brandico */
+
+  [class*="brandico-"]:before {
+    font-family: 'brandico', sans-serif;
+  }
+
+  /* entypo */
+
+  [class*="entypo-"]:before {
+    font-family: 'entypo', sans-serif;
+  }
+
+  /* openwebicons */
+
+  [class*="openwebicons-"]:before {
+    font-family: 'OpenWeb Icons', sans-serif;
+  }
+
+  /* zocial */
+
+  [class*="zocial-"]:before {
+    font-family: 'zocial', sans-serif;
+  }
+
+  .form-signin {
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
+  }
+
+
+  .login-input {
+    margin-bottom: -1px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  .login-input-pass {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+
+
+  .signup-input {
+    margin-bottom: -1px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  .signup-input-confirm {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+
+
+
+  .create-account {
+    text-align: center;
+    width: 100%;
+    display: block;
+  }
+
+  .form-signin .form-control {
+    position: relative;
+    font-size: 16px;
+    height: auto;
+    padding: 10px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+
+  .btn-center {
+    width: 50%;
+    text-align: center;
+    margin: inherit;
+  }
+
+  .social-login-btn {
+    margin: 5px;
+    width: 20%;
+    font-size: 250%;
+    padding: 0;
+  }
+
+  .social-login-more {
+    width: 45%;
+  }
+
+  .social-google {
+    background-color: #da573b;
+    border-color: #be5238;
+  }
+
+  .social-google:hover {
+    background-color: #be5238;
+    border-color: #9b4631;
+  }
+
+  .social-twitter {
+    background-color: #1daee3;
+    border-color: #3997ba;
+  }
+
+  .social-twitter:hover {
+    background-color: #3997ba;
+    border-color: #347b95;
+  }
+
+  .social-facebook {
+    background-color: #4c699e;
+    border-color: #47618d;
+  }
+
+  .social-facebook:hover {
+    background-color: #47618d;
+    border-color: #3c5173;
+  }
+
+  .social-linkedin {
+    background-color: #4875B4;
+    border-color: #466b99;
+  }
+
+  .social-linkedin:hover {
+    background-color: #466b99;
+    border-color: #3b5a7c;
+  }
+</style>
+<div class="container">
+
+  <script id="metamorph-1-start" type="text/x-placeholder"></script>
+  <script id="metamorph-21-start" type="text/x-placeholder"></script>
+
+  <div class="container text-center">
+    <form class="form-signin" data-ember-action="2">
+      <h2 class="form-signin-heading">Sign in</h2>
+
+      <small class="text-muted">Connect Catalog App with your favorite social network</small>
+      <br><br>
+
+
+      <p>
+        <!--FACEBOOK SIGN IN BUTTON
+        <a class="btn btn-primary social-login-btn social-facebook fb-login-button" data-max-rows="1" data-size="medium" data-button-type="login_with" data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="true" scope="public_profile,email"
+          onlogin="checkLoginState();">
+          <i class="fa fa-facebook"></i></a>-->
+          <div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="login_with" data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="false"></div>
+
+        <!--TWITTER SIGN IN BUTTON-->
+        <a class="btn btn-primary social-login-btn social-twitter" href="/auth/twitter"><i class="fa fa-twitter"></i></a>
+      </p>
+      <p>
+        <!--LINKEDIN SIGN IN BUTTON-->
+        <a class="btn btn-primary social-login-btn social-linkedin" href="/auth/linkedin"><i class="fa fa-linkedin"></i></a>
+
+        <!--GOOGLE SIGN IN BUTTON-->
+        <a class="btn btn-primary social-login-btn social-google" data-scope="openid email" data-clientid="YOUR_CLIENT_ID_GOES_HERE.apps.googleusercontent.com" data-redirecturi="postmessage" data-accesstype="offline" data-cookiepolicy="single_host_origin" data-callback="signInCallback"
+          data-approvalprompt="force">
+           <i class="fa fa-google-plus"></i>
+        </a>
+
+      </p>
+      <br><br>
+    </form>
+  </div>
+</div>
+<script type="text/javascript" src="{{ url_for('static', filename='jquery-3.3.1.min.js') }}"></script>
+<!--FACEBOOK SIGN IN -->
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId: '846524132078825',
+      cookie: true, // enable cookies to allow the server to access
+      // the session
+      xfbml: true, // parse social plugins on this page
+      version: 'v2.2' // use version 2.2
+    });
+  };
+  // Load the SDK asynchronously
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s);
+    js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+  // Here we run a very simple test of the Graph API after login is
+  // successful.  See statusChangeCallback() for when this call is made.
+  function sendTokenToServer() {
+    var access_token = FB.getAuthResponse()['accessToken'];
+    console.log(access_token)
+    console.log('Welcome!  Fetching your information.... ');
+    FB.api('/me', function(response) {
+      console.log('Successful login for: ' + response.name);
+      $.ajax({
+        type: 'POST',
+        url: '/fbconnect?state={{STATE}}',
+        processData: false,
+        data: access_token,
+        contentType: 'application/octet-stream; charset=utf-8',
+        success: function(result) {
+          // Handle or verify the server response if necessary.
+          if (result) {
+            $('#result').html('Login Successful!</br>' + result + '</br>Redirecting...')
+            setTimeout(function() {
+              window.location.href = "/restaurant";
+            }, 4000);
+
+          } else {
+            $('#result').html('Failed to make a server-side call. Check your configuration and console.');
+          }
+        }
+
+      });
+    });
+  }
+</script>
+{% endblock %}
