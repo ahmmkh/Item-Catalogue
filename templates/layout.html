@@ -47,6 +47,13 @@
           {% else %}
           <small class="text-muted">Hello {{session['username']}}!<a href="/disconnect"> Disconnect from here</a></small>
           {% endif %}
+          {% with messages = get_flashed_messages() %} {% if messages %}
+          <li>
+          {% for message in messages %}
+          <small class="text-muted">{{message}}</small>
+          {% endfor %}
+          </li>
+          {% endif %} {% endwith %}
         </div>
 
         <ul class="nav">

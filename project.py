@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, url_for, redirect, jsonify
+from flask import Flask, render_template, request, url_for, redirect, jsonify, flash
 from flask_uploads import UploadSet, configure_uploads, IMAGES
 from sqlalchemy import create_engine, asc
 from sqlalchemy.orm import sessionmaker
@@ -230,7 +230,7 @@ def fbconnect():
     login_session['user_id'] = user_id
 
     return render_template('hello.html',username=login_session['username'],picture=login_session['picture'],userID=login_session['user_id'])
-    #flash("Now logged in as {}".format(login_session['username']))
+    flash("Now logged in as {}".format(login_session['username']))
 
 @app.route('/fbdisconnect')
 def fbdisconnect():
@@ -300,7 +300,7 @@ def newCategory():
             user_id=login_session['user_id'],
             picture = filename)
         session.add(newCategory)
-        #flash('New Category %s Successfully Created' % newCategory.name)
+        flash('New Category %s Successfully Created' % newCategory.name)
         session.commit()
         return redirect(url_for('index'))
     else:
@@ -322,7 +322,7 @@ def deleteCategory(category):
     if request.method == 'POST':
         session.delete(categoryToDelete)
         #os.remove(os.path.join(app.config['UPLOADED_ITEMS_DEST'], categoryToDelete.filename))
-        #flash('New Category %s Successfully Created' % newCategory.name)
+        flash('Category: %s Successfully Deleted' % categoryToDelete.name)
         session.commit()
         return redirect(url_for('index'))
     else:
@@ -350,7 +350,7 @@ def addNewItem(category):
         category=categoryForItems)
 
         session.add(newItem)
-        #flash('New Item %s Successfully Created' % newItem.name)
+        flash('New Item %s Successfully Created' % newItem.name)
         session.commit()
         return redirect(url_for('index'))
     else:
@@ -380,7 +380,7 @@ def updateItem(category,item_id):
             filename = photos.save(request.files['photo'])
             item.picture = filename
         session.add(item)
-        #flash('New Category %s Successfully Created' % newCategory.name)
+        flash('Category: %s Successfully Updated' % newCategory.name)
         session.commit()
         return redirect(url_for('index'))
     else:
@@ -402,7 +402,7 @@ def deleteItem(category,item_id):
     if request.method == 'POST':
         session.delete(item)
         #os.remove(os.path.join(app.config['UPLOADED_ITEMS_DEST'], item.filename))
-        #flash('New Category %s Successfully Created' % newCategory.name)
+        flash('Item: %s Successfully Deleted' % item.name)
         session.commit()
         return redirect(url_for('index'))
     else:
@@ -424,10 +424,10 @@ def disconnect():
         del login_session['picture']
         del login_session['user_id']
         del login_session['provider']
-        #flash("You have successfully been logged out.")
+        flash("You have successfully been logged out.")
         return redirect(url_for('index'))
     else:
-        #flash("You were not logged in")
+        flash("You were not logged in")
         return redirect(url_for('index'))
 
 # Show about page
