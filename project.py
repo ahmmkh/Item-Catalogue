@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, url_for, redirect
+from flask import Flask, render_template, request, url_for, redirect, jsonify
 from flask_uploads import UploadSet, configure_uploads, IMAGES
 from sqlalchemy import create_engine, asc
 from sqlalchemy.orm import sessionmaker
@@ -241,6 +241,30 @@ def fbdisconnect():
     h = httplib2.Http()
     result = h.request(url, 'DELETE')[1]
     return "you have been logged out"
+
+
+# JSON APIs to view Restaurant Information
+@app.route('/categories/<category>/JSON')
+def CategoryJSON(category):
+    catalog = session.query(Category).filter_by(name=category).one()
+    items = session.query(CategoryItem).filter_by(
+        category_id=catalog.id).all()
+    return jsonify(CatalogItems=[i.serialize for i in items])
+
+
+@app.route('/categories/<category>/<int:item_id>/JSON')
+def CategoryItemJSON(category, item_id):
+    category = session.query(Category).filter_by(name=category).one()
+    Catalog_Item = session.query(CategoryItem).filter_by(id=item_id).one()
+    return jsonify(Catalog_Item=Catalog_Item.serialize)
+
+
+@app.route('/categories/JSON')
+def CategoriesJSON():
+    categories = session.query(Category).all()
+    return jsonify(Categories=[r.serialize for r in categories])
+
+
 
 # Show all categories
 @app.route('/')
