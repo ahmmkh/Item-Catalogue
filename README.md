@@ -64,12 +64,12 @@ Type python ./project.py to run your program!
 
 ## JSON EndPoints
 `/categories/JSON` JSON endpoint to view all info about all categories
-![alt text](https://github.com/AhmedElkashef02/Item-Catalogue/assets/categoriesJSON.png)
+![alt text](https://github.com/AhmedElkashef02/Item-Catalogue/blob/master/assets/categoriesJSON.png)
 
 
 `/categories/<category>/<int:item_id>/JSON` JSON endpoint to view all info for a single item
-![alt text](https://github.com/AhmedElkashef02/Item-Catalogue/assets/singleItemJSON.png)
+![alt text](https://github.com/AhmedElkashef02/Item-Catalogue/blob/master/assets/singleItemJSON.png)
 
 
 `/categories/<category>/JSON`JSON endpoint to view all items within a category
-![alt text](https://github.com/AhmedElkashef02/Item-Catalogue/assets/singleCategoryJSON.png)
+![alt text](https://github.com/AhmedElkashef02/Item-Catalogue/blob/master/assets/SingleCategoryJSON.png)
