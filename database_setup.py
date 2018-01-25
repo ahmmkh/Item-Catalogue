@@ -31,6 +31,7 @@ class Category(Base):
         return {
             'name': self.name,
             'id': self.id,
+            'picture': self.picture
         }
 
 
@@ -46,6 +47,19 @@ class CategoryItem(Base):
     user_id = Column(Integer, ForeignKey('user.id'))
     user = relationship(User)
     picture = Column(String(250))
+
+    @property
+    def serialize(self):
+        """Return object data in easily serializeable format"""
+        return {
+            'name': self.name,
+            'id': self.id,
+            'description': self.description,
+            'price': self.price,
+            'category_id': self.category_id,
+            'user_id': self.user_id,
+            'picture': self.picture
+        }
 
 
 engine = create_engine('sqlite:///items.db')
