@@ -109,34 +109,14 @@
     border-color: #9b4631;
   }
 
-  .social-twitter {
-    background-color: #1daee3;
-    border-color: #3997ba;
+  .abcRioButton {
+    width: 80% !important;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
   }
-
-  .social-twitter:hover {
-    background-color: #3997ba;
-    border-color: #347b95;
-  }
-
-  .social-facebook {
-    background-color: #4c699e;
-    border-color: #47618d;
-  }
-
-  .social-facebook:hover {
-    background-color: #47618d;
-    border-color: #3c5173;
-  }
-
-  .social-linkedin {
-    background-color: #4875B4;
-    border-color: #466b99;
-  }
-
-  .social-linkedin:hover {
-    background-color: #466b99;
-    border-color: #3b5a7c;
+  #signinButton {
+    margin-top: 10px;
   }
 </style>
 <div class="container">
@@ -146,33 +126,59 @@
     <form class="form-signin" data-ember-action="2">
       <h2 class="form-signin-heading">Sign in</h2>
 
-      <small class="text-muted">Connect Catalog App with your favorite social network</small>
+      <small class="text-muted">Connect to Catalog App with your favorite social network</small>
       <br><br>
 
-
-      <p>
+      <div id="login-buttons">
         <!--FACEBOOK SIGN IN BUTTON-->
-          <div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="login_with" data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="false" scope="public_profile,email" onlogin="sendTokenToServer();"></div>
+        <div class="fb-login-button" data-max-rows="1" data-size="medium" data-button-type="login_with" data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="false" scope="public_profile,email" onlogin="sendTokenToServer();"></div>
 
-        <!--TWITTER SIGN IN BUTTON-->
-        <a class="btn btn-primary social-login-btn social-twitter" href="/auth/twitter"><i class="fa fa-twitter"></i></a>
-      </p>
-      <p>
-        <!--LINKEDIN SIGN IN BUTTON-->
-        <a class="btn btn-primary social-login-btn social-linkedin" href="/auth/linkedin"><i class="fa fa-linkedin"></i></a>
-
-        <!--GOOGLE SIGN IN BUTTON-->
-        <a class="btn btn-primary social-login-btn social-google" data-scope="openid email" data-clientid="YOUR_CLIENT_ID_GOES_HERE.apps.googleusercontent.com" data-redirecturi="postmessage" data-accesstype="offline" data-cookiepolicy="single_host_origin" data-callback="signInCallback"
-          data-approvalprompt="force">
-           <i class="fa fa-google-plus"></i>
-        </a>
-
-      </p>
+        <!-- GOOGLE PLUS SIGN IN BUTTON-->
+        <div id="signinButton">
+          <span class="g-signin" data-scope="openid email" data-clientid="1065647263734-rptkvlu7nijvi2kfu7igcle6qis5ri5r.apps.googleusercontent.com" data-redirecturi="postmessage" data-accesstype="offline" data-cookiepolicy="single_host_origin" data-callback="signInCallback"
+            data-approvalprompt="force">
+          </span>
+        </div>
+      </div>
       <br><br>
     </form>
   </div>
 </div>
 <script type="text/javascript" src="{{ url_for('static', filename='jquery-3.3.1.min.js') }}"></script>
+<script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
+<!-- Customize Google Button and signin-->
+<script>
+  function signInCallback(authResult) {
+    print(authResult)
+    if (authResult['code']) {
+      // Hide the sign-in button now that the user is authorized
+      $('#signinButton').attr('style', 'display: none');
+      // Send the one-time-use code to the server, if the server responds, write a 'login successful' message to the web page and then redirect back to the main restaurants page
+      $.ajax({
+        type: 'POST',
+        url: '/gconnect?state={{STATE}}',
+        processData: false,
+        data: authResult['code'],
+        contentType: 'application/octet-stream; charset=utf-8',
+        success: function(result) {
+          // Handle or verify the server response if necessary.
+          if (result) {
+            $('#result').html('Login Successful!</br>' + result + '</br>Redirecting...')
+            setTimeout(function() {
+              window.location.href = "/";
+            }, 4000);
+
+          } else if (authResult['error']) {
+            console.log('There was an error: ' + authResult['error']);
+          } else {
+            $('#result').html('Failed to make a server-side call. Check your configuration and console.');
+          }
+        }
+
+      });
+    }
+  }
+</script>
 <!--FACEBOOK SIGN IN -->
 <script>
   window.fbAsyncInit = function() {
@@ -211,7 +217,7 @@
           // Handle or verify the server response if necessary.
           if (result) {
             $('#result').html('Login Successful!</br>' + result + '</br>Redirecting...');
-            $('.text-center').css('display','none');
+            $('.text-center').css('display', 'none');
             setTimeout(function() {
               window.location.href = "/";
             }, 4000);
