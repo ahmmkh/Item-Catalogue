@@ -61,6 +61,12 @@ Open up the terminal program. In KDE, open the main menu and select "Run Command
 Type cd ~/pythonpractice to change directory to your pythonpractice folder, and hit Enter.
 Type python ./project.py to run your program!
 
+## Important Note
+When adding an item or a category, please provide an image in the form, if you updated a category or an item with no image, the code will not work.
+
+## Things to improve
+- Making adding images optional.
+- Deleting actual images from the server after the user deletes them.
 
 ## JSON EndPoints
 `/categories/JSON` JSON endpoint to view all info about all categories
