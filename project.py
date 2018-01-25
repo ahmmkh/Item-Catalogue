@@ -249,6 +249,7 @@ def fbdisconnect():
 
 
 # JSON APIs to view Restaurant Information
+
 @app.route('/categories/<category>/JSON')
 def CategoryJSON(category):
     catalog = session.query(Category).filter_by(name=category).one()
